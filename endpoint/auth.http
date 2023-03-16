@@ -1,0 +1,29 @@
+POST {{ baseUrl }}/{{ urlPath }}/signup
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+{
+    "email": "test@mail.com",
+    "password": "Pass@123",
+    "confirmPassword": "Pass@123"
+}
+
+###
+
+POST {{ baseUrl }}/{{ urlPath }}/signin
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+{
+    "email": "test@mail.com",
+    "password": "Pass@123"
+}
+
+###
+
+GET {{ baseUrl }}/{{ urlPath }}/signout
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
