@@ -5,6 +5,10 @@ export class Helpers {
         return str.toLowerCase();
     }
 
+    public static removeSpace(str: string): string {
+        return str.replace(/\s+/g, '');
+    }
+
     public static generateRandomIntegers(integerLength: number): number {
         const characters = '0123456789';
         let result = '';
