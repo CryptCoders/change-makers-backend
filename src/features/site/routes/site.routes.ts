@@ -1,6 +1,7 @@
 import express, { Router } from 'express';
 import { CreateSite } from '@site/controllers/create.site';
 import { GetSite } from '@site/controllers/get.site';
+import { EditSite } from '@site/controllers/edit.site';
 import { authMiddleware } from '@globals/helpers/authMiddleware';
 import { GetSiteLinks } from '@site/controllers/get.links';
 
@@ -17,6 +18,7 @@ class SiteRoutes
     public site(): Router {
         this.createRouter.post('/create', authMiddleware.checkAuthentication, CreateSite.prototype.create);
         this.createRouter.get('/user/get/all', authMiddleware.checkAuthentication, GetSiteLinks.prototype.get);
+        this.createRouter.put('/:siteName', authMiddleware.checkAuthentication, EditSite.prototype.create);
 
         return this.createRouter;
     }

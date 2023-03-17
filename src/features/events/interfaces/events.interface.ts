@@ -7,5 +7,5 @@ export interface IEventDocument extends Document {
     name: string;
     image: string;
     description: string;
-    date?: Date;
+    date: Date;
 }

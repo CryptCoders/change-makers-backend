@@ -17,7 +17,7 @@ export class CreateEvent {
     @joiValidation(createSchema)
     public async create(req: Request, res: Response): Promise<void> {
         const { siteName } = req.params;
-        const { name, description, image } = req.body;
+        const { name, description, image, date } = req.body;
 
         const eventId = new ObjectId();
         const site = await siteService.getSiteByName(siteName);
@@ -26,7 +26,8 @@ export class CreateEvent {
             _id: eventId,
             siteId: site._id,
             name: Helpers.lowercase(name),
-            description: description
+            description: description,
+            date: date
         } as IEventDocument;
 
         const result: UploadApiResponse = await uploads(image, `${req.currentUser!.id}`, true, true) as UploadApiResponse;
