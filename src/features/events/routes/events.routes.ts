@@ -11,7 +11,7 @@ class EventsRoutes
     }
 
     public routes(): Router {
-        this.eventRouter.post('/create', authMiddleware.checkAuthentication, CreateEvent.prototype.create);
+        this.eventRouter.post('/event/create/:siteName', authMiddleware.checkAuthentication, CreateEvent.prototype.create);
 
         return this.eventRouter;
     }

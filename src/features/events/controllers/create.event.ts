@@ -16,14 +16,15 @@ import { Helpers } from '@globals/helpers/helpers';
 export class CreateEvent {
     @joiValidation(createSchema)
     public async create(req: Request, res: Response): Promise<void> {
+        const { siteName } = req.params;
         const { name, description, image } = req.body;
 
         const eventId = new ObjectId();
-        const siteId: ISiteDocument = await siteService.getSiteByAuthId(req.currentUser!.id);
+        const site = await siteService.getSiteByName(siteName);
 
         const eventData: IEventDocument = {
             _id: eventId,
-            siteId: siteId._id,
+            siteId: site._id,
             name: Helpers.lowercase(name),
             description: description
         } as IEventDocument;
