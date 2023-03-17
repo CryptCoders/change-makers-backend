@@ -25,6 +25,8 @@
         ],
         "paths": {
             "@auth/*": ["./src/features/auth/*"],
+            "@site/*": ["./src/features/site/*"],
+            "@events/*": ["./src/features/events/*"],
             "@globals/*": ["./src/shared/globals/*"],
             "@services/*": ["./src/shared/services/*"],
             "@sockets/*": ["./src/shared/sockets/*"],
