@@ -31,11 +31,11 @@ const createSchema: ObjectSchema = Joi.object().keys({
 });
 
 export default function validate(phone_number: string, social_fb: string, social_insta: string): void {
-    if (!phone_number.match('^\+[0-9]{1,2}-[0-9]{10}$'))
+    if (!phone_number.match('^\\+[0-9]{1,2}\-[0-9]{10}$'))
         throw new BadRequestError('Invalid phone number');
-    if (!social_fb.match('^https:\/\/www.facebook.com\/[A-Za-z0-9\.]+$'))
+    if (!social_fb.match('^https://www.facebook.com/[A-Za-z0-9\.]+/$'))
         throw new BadRequestError('Invalid fb link');
-    if (!social_insta.match('^https:\/\/www.instagram.com\\/[A-Za-z0-9\\.]+$'))
+    if (!social_insta.match('^https://www.instagram.com/[A-Za-z0-9\.]+/$'))
         throw new BadRequestError('Invalid insta link');
 }
 

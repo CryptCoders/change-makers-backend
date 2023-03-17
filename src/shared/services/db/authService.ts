@@ -11,6 +11,14 @@ class AuthService {
         return await AuthModel.findOne(query).exec() as IAuthDocument;
     }
 
+    public async getUserByAuthId(id: string): Promise<IAuthDocument> {
+        const query = {
+            _id: id
+        }
+
+        return await AuthModel.findOne(query).exec() as IAuthDocument;
+    }
+
     public async createAuthUser(data: IAuthDocument): Promise<void> {
         await AuthModel.create(data);
     }

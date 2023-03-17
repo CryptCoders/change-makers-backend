@@ -1,7 +1,9 @@
 import { Request, Response } from 'express';
 import { ObjectId } from 'mongodb';
 import { ISiteDocument } from '@site/interfaces/site.interface';
+import { IAuthDocument} from '@auth/interfaces/auth.interface';
 import { siteService } from '@services/db/siteService';
+import { authService } from '@services/db/authService';
 import { BadRequestError } from '@globals/helpers/errorHandler';
 import { Config } from '@root/config';
 import { UploadApiResponse } from 'cloudinary';
@@ -17,6 +19,8 @@ export class GetSite {
             throw new BadRequestError('No such organization exists');
         }
 
-        res.status(HTTP_STATUS.OK).json({ site: site, email: req.currentUser!.email });
+        const user: IAuthDocument = await authService.getUserByAuthId(site.authId);
+
+        res.status(HTTP_STATUS.OK).json({ site: site, email: user.email });
     }
 }

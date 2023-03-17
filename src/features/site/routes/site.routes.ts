@@ -5,22 +5,24 @@ import { authMiddleware } from '@globals/helpers/authMiddleware';
 
 class SiteRoutes
 {
-    private readonly routes;
+    private readonly createRouter;
+    private readonly getRouter;
 
     constructor () {
-        this.routes = express.Router();
+        this.createRouter = express.Router();
+        this.getRouter = express.Router();
     }
 
     public site(): Router {
-        this.routes.post('/create', authMiddleware.checkAuthentication, CreateSite.prototype.create);
+        this.createRouter.post('/create', authMiddleware.checkAuthentication, CreateSite.prototype.create);
 
-        return this.routes;
+        return this.createRouter;
     }
 
     public get(): Router {
-        this.routes.get('/get/:name', GetSite.prototype.get);
+        this.getRouter.get('/get/:name', GetSite.prototype.get);
 
-        return this.routes;
+        return this.getRouter;
     }
 }
 
