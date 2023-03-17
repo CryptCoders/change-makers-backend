@@ -22,10 +22,10 @@ const createSchema: ObjectSchema = Joi.object().keys({
         'any.required': 'Phone no is required',
         'string.empty': 'Phone no is required',
     }),
-    social_fb: Joi.string().messages({
+    social_fb: Joi.string().allow(null, '').messages({
         'any.required': 'Phone no is required',
     }),
-    social_insta: Joi.string().messages({
+    social_insta: Joi.string().allow(null, '').messages({
         'any.required': 'Phone no is required',
     })
 });

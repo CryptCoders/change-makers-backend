@@ -23,6 +23,10 @@ class SiteService {
     public async createSite(data: ISiteDocument): Promise<void> {
         await SiteModel.create(data);
     }
+
+    public async updateSite(name: string, data: ISiteDocument): Promise<void> {
+        await SiteModel.updateOne({ name: name }, { $set: data });
+    }
 }
 
 export const siteService: SiteService = new SiteService();

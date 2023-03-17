@@ -13,6 +13,10 @@ const createSchema: ObjectSchema = Joi.object().keys({
     image: Joi.string().required().messages({
         'any.required': 'Image is required',
         'string.empty': 'Image is required',
+    }),
+    date: Joi.string().required().messages({
+        'any.required': 'Date is required',
+        'string.empty': 'Date is required',
     })
 });
 

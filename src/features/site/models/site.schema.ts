@@ -7,7 +7,7 @@ const siteSchema: Schema = new Schema(
         name: { type: String },
         description: { type: String },
         image: { type: String },
-        events: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Event' }],
+        event: [{ type: Array }],
         address: { type: String },
         phone_no: { type: String },
         social_fb: { type: String },

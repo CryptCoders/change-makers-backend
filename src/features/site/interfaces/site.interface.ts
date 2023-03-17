@@ -1,5 +1,6 @@
 import { ObjectId } from 'mongodb';
 import { Document } from 'mongoose';
+import { IEventDocument } from '@events/interfaces/events.interface';
 
 export interface ISiteDocument extends Document {
     _id: string | ObjectId;
@@ -7,7 +8,7 @@ export interface ISiteDocument extends Document {
     name: string;
     description: string;
     image: string;
-    events?: Array<string | ObjectId>;
+    event?: Array<IEventDocument>;
     address: string;
     phone_no: string;
     social_fb?: string;
