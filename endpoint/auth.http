@@ -17,13 +17,20 @@ Accept: application/json
 withCredentials: true
 
 {
-    "email": "test@mail.com",
+    "email": "xelely@lyft.live",
     "password": "Pass@123"
 }
 
 ###
 
 GET {{ baseUrl }}/{{ urlPath }}/signout
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+###
+
+GET {{ baseUrl }}/{{ urlPath }}/currentUser
 Content-Type: application/json
 Accept: application/json
 withCredentials: true

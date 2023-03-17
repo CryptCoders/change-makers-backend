@@ -13,8 +13,6 @@ export class Config {
     public static CLOUD_NAME: string | undefined;
     public static CLOUD_API_KEY: string | undefined;
     public static CLOUD_API_SECRET: string | undefined;
-    public static SENDER_EMAIL: string | undefined;
-    public static SENDER_PASSWORD: string | undefined;
 
     constructor() {
         Config.DATABASE_URL = process.env.DATABASE_URL || 'mongodb://127.0.0.1:27017/sociaza-backend';
@@ -26,8 +24,6 @@ export class Config {
         Config.CLOUD_NAME = process.env.CLOUD_NAME || '';
         Config.CLOUD_API_KEY = process.env.CLOUD_API_KEY || '';
         Config.CLOUD_API_SECRET = process.env.CLOUD_API_SECRET || '';
-        Config.SENDER_EMAIL = process.env.SENDER_EMAIL || '';
-        Config.SENDER_PASSWORD = process.env.SENDER_PASSWORD || '';
     }
 
     public static createLogger(name: string): bunyan {

@@ -1,6 +1,7 @@
 import { ISiteDocument } from '@site/interfaces/site.interface';
 import { Helpers } from '@globals/helpers/helpers';
 import { SiteModel } from '@site/models/site.schema';
+import {query} from "express";
 
 class SiteService {
     public async getSiteByName(name: string): Promise<ISiteDocument> {
@@ -11,12 +12,12 @@ class SiteService {
         return await SiteModel.findOne(query).exec() as ISiteDocument;
     }
 
-    public async getSiteByAuthId(id: string): Promise<ISiteDocument> {
+    public async getSiteByAuthId(id: string): Promise<ISiteDocument[]> {
         const query = {
             authId: id
         }
 
-        return await SiteModel.findOne(query).exec() as ISiteDocument;
+        return await SiteModel.find(query).exec() as ISiteDocument[];
     }
 
     public async createSite(data: ISiteDocument): Promise<void> {

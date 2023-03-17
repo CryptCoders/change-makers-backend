@@ -19,3 +19,10 @@ GET {{ baseUrl }}/{{ urlPath }}/get/food bank
 Content-Type: application/json
 Accept: application/json
 withCredentials: true
+
+###
+
+GET {{ baseUrl }}/{{ urlPath }}/user/get/all
+Content-Type: application/json
+Accept: application/json
+withCredentials: true

@@ -2,6 +2,7 @@ import express, { Router } from 'express';
 import { SignUp } from '@auth/controllers/signup';
 import { SignIn } from '@auth/controllers/signin';
 import { Signout } from '@auth/controllers/signout';
+import { CurrentUser } from '@auth/controllers/currentUser';
 import { authMiddleware } from '@globals/helpers/authMiddleware';
 
 class AuthRoutes {
@@ -22,6 +23,7 @@ class AuthRoutes {
 
     public signoutRoute(): Router {
         this.signoutRouter.get('/signout', authMiddleware.checkAuthentication, Signout.prototype.signout);
+        this.signoutRouter.get('/currentUser', authMiddleware.checkAuthentication, CurrentUser.prototype.read);
 
         return this.signoutRouter;
     }

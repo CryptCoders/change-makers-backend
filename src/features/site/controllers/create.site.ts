@@ -10,6 +10,11 @@ import { UploadApiResponse } from 'cloudinary';
 import { uploads } from '@globals/helpers/cloudinaryUpload';
 import HTTP_STATUS from 'http-status-codes';
 import { Helpers } from '@globals/helpers/helpers';
+import Logger from 'bunyan';
+import { IAuthDocument } from '@auth/interfaces/auth.interface';
+import { authService } from '@services/db/authService';
+
+const log: Logger = Config.createLogger('createSite');
 
 export class CreateSite {
     @joiValidation(createSchema)
@@ -41,8 +46,8 @@ export class CreateSite {
             throw new BadRequestError(result.message);
 
         siteData.image = `https://res.cloudinary.com/${Config.CLOUD_NAME}/image/upload/v${result.version}/${req.currentUser!.id}`;
-
         await siteService.createSite(siteData);
+
         res.status(HTTP_STATUS.OK).json({ message: 'Site hosted successfully.', site: siteData });
     }
 }

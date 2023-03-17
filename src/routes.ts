@@ -13,7 +13,7 @@ export default (app: Application) => {
 
         app.use(BASE_PATH, authMiddleware.verifyUser, authRoutes.signoutRoute());
         app.use(BASE_PATH, authMiddleware.verifyUser, siteRoutes.site());
-        app.use(BASE_PATH, eventRoutes.routes());
+        app.use(BASE_PATH, authMiddleware.verifyUser, eventRoutes.routes());
     };
 
     routes();
